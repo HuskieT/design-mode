@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//www.w3cschool.cn/statics/assets/react/react.min.js"></script>
+    <script src="//www.w3cschool.cn/statics/assets/react/react-dom.min.js"></script>
+    <script src="//www.w3cschool.cn/statics/assets/react/babel.min.js"></script>
+    <script type="text/jsx">
+        //React 推荐使用内联样式。我们可以使用 camelCase 语法来设置内联样式.
+        {/*由于 JSX 就是 JavaScript，一些标识符像 class 和 for 不建议作为 XML 属性名。作为替代，React DOM 使用 className 和 htmlFor 来做对应的属性。*/}
+        var myStyle = {
+            fontSize: 30,
+            color: '#FF0000'
+        };
+        ReactDOM.render(
+            // , 不要遗忘
+            <h1 style = {myStyle}>hello,world!</h1>,
+            document.getElementById("example")
+        )
+        var i = 1;
+        ReactDOM.render(
+            // 在 JSX 中不能使用 if else 语句，单可以使用 conditional (三元运算) 表达式来替代
+            <div>
+                <h1>{1+1}</h1>
+                {/*注释需要写在花括号中(此处只能用这种 不能用//)*/}
+                <h2>{i = 1 ? 'True!' : 'False'}</h2>
+            </div>
+            ,
+            document.getElementById("test1")
+        )
+        var arr = [
+            <h2>W3Cschool教程</h2>,
+            <h2>从W3Cschool开始！</h2>,
+        ];
+        ReactDOM.render(
+             <div>{arr}</div>,
+            document.getElementById("test2")
+        )
+
+    </script>
+</head>
+<body>
+<div id="example"></div>
+<div id="test1"></div>
+<div id="test2"></div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//www.w3cschool.cn/statics/assets/react/react.min.js"></script>
+    <script src="//www.w3cschool.cn/statics/assets/react/react-dom.min.js"></script>
+    <script src="//www.w3cschool.cn/statics/assets/react/babel.min.js"></script>
+    <script type="text/babel">
+        {/*JSX转化器
+         要把带有JSX语法的代码转化为纯Javascript代码，有多种方式，对于内联与HTML中的代码或者是未经过转化的外部文件，在script标签中要加上type="text/jsx"，并引入JSXTransformer.js文件即可，不过这种方式并不建议在生产环境使用，建议的方法是在代码上线前就将代码转换好，可以使用npm全局安装react-tools*/}
+        //React.createClass 方法用于生成一个组件类 HelloMessage
+        {/*注意，原生 HTML 元素名以小写字母开头，而自定义的 React 类名以大写字母开头，比如 HelloMessage 不能写成 helloMessage。
+         除此之外还需要注意组件类只能包含一个顶层标签，否则也会报错*/}
+
+        var HelloMessage = React.createClass({
+            render: function() {
+                return <h1>Hello World！</h1>;
+            }
+        });
+
+        ReactDOM.render(
+                <HelloMessage />,
+            document.getElementById('example')
+        );
+        //如果我们需要向组件传递参数，可以使用 this.props 对象
+        //在添加属性时， class 属性需要写成 className ，for 属性需要写成 htmlFor ，这是因为 class 和 for 是 JavaScript 的保留字
+        var HelloNew = React.createClass({
+            render: function() {
+                return <h1>Hello {this.props.name}</h1>;
+            }
+        });
+
+        ReactDOM.render(
+                <HelloNew name="W3CSchool" />,
+            document.getElementById('example')
+        );
+
+    </script>
+    <script type="text/babel">
+        var WebSite = React.createClass({
+            render: function() {
+                return (
+                        <div>
+                            <Name name={this.props.name} />
+                            <Link site={this.props.site} />
+                        </div>
+                );
+            }
+        });
+
+        var Name = React.createClass({
+            render: function() {
+                return (
+                        <h1>{this.props.name}</h1>
+                );
+            }
+        });
+
+        var Link = React.createClass({
+            render: function() {
+                return (
+                        <a href={this.props.site}>
+                            {this.props.site}
+                        </a>
+                );
+            }
+        });
+
+        ReactDOM.render(
+                <WebSite name="W3Cschool教程" site=" http://www.w3cschool.cn" />,
+            document.getElementById('test1')
+        );
+    </script>
+    <script type="text/babel">
+        var LikeButton = React.createClass({
+            getInitialState: function() {
+                return {liked: false};
+            },
+            handleClick: function(event) {
+                this.setState({liked: !this.state.liked});
+            },
+            render: function() {
+                var text = this.state.liked ? '喜欢' : '不喜欢';
+                return (
+                        <p onClick={this.handleClick}>
+                            你<b>{text}</b>我。点我切换状态。
+                        </p>
+                );
+            }
+        });
+
+        ReactDOM.render(
+            <LikeButton />,
+            document.getElementById('test2')
+        );
+    </script>
+    <script type="text/jsx">
+        //React 的 JSX 使用大写和小写字母来区分本地的组件类和 HTML 标签
+        // React 渲染 HTML标签
+        var myDivElement = <div className="foo" />;
+        React.render(myDivElement, document.body);
+
+        // React 渲染 HReact组件
+        var MyComponent = React.createClass({/*...*/});
+        var myElement = <MyComponent someProperty={true} />;
+        React.render(myElement, document.body);
+
+        //在React中写行内样式时，要这样写，不能采用引号的书写方式
+        React.render(
+                <div style={{color:'red'}}>
+                    xxxxx
+                </div>,
+            document.body
+        );
+    </script>
+
+</head>
+<body>
+<div id="example"></div>
+<div id="test1"></div>
+<div id="test2"></div>
+
+</body>
+</html>
