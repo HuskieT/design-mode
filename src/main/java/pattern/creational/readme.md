@@ -1,0 +1,16 @@
+#  创建型模式
+
+创建型模式，共五种：工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式。
+
+工厂方法模式          factory   part2
+
+抽象工厂模式          factory   part3
+
+单例模式              singlecase
+
+建造者模式            builder
+
+原型模式              prototype
+
+
+
